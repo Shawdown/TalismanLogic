@@ -48,6 +48,11 @@
   <ItemGroup>
     <None Include="GeneralClassDiagram.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Talisman.Logic.Core\Talisman.Logic.Core.csproj">
+      <Project>{4F4ADA36-8DB7-4DE5-9148-9B1784032FD0}</Project>
+      <Name>Talisman.Logic.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

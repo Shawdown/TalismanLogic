@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,25 +42,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cards\Abstract\IDiscardable.cs" />
-    <Compile Include="Cards\Abstract\IEncounterable.cs" />
+    <Compile Include="Encounters\Abstract\EventType.cs" />
+    <Compile Include="Encounters\Abstract\IEncounterAction.cs" />
+    <Compile Include="Encounters\Implementation\EncounterResult.cs" />
+    <Compile Include="Cards\Abstract\ICard.cs" />
+    <Compile Include="Encounters\Abstract\IEncounterable.cs" />
     <Compile Include="Cards\Abstract\CardType.cs" />
-    <Compile Include="Cards\Abstract\IOwnable.cs" />
-    <Compile Include="Cards\Implementation\BaseOwnableCard.cs" />
+    <Compile Include="Encounters\Abstract\IEncounterResult.cs" />
     <Compile Include="Cards\Implementation\BaseCard.cs" />
-    <Compile Include="Cards\Implementation\MagicObjectCard.cs" />
-    <Compile Include="Cards\Implementation\ObjectCard.cs" />
-    <Compile Include="Decks\Abstract\Deck.cs" />
+    <Compile Include="Decks\Abstract\IDeck.cs" />
+    <Compile Include="Gameplay\Implementation\CardManager.cs" />
+    <Compile Include="Cards\Implementation\CharacterCard.cs" />
+    <Compile Include="Cards\Implementation\MagicObjectBaseCard.cs" />
+    <Compile Include="Cards\Implementation\ObjectBaseCard.cs" />
+    <Compile Include="Decks\Implementation\Deck.cs" />
     <Compile Include="Decks\Abstract\DeckType.cs" />
-    <Compile Include="Game\Abstract\Alignment.cs" />
+    <Compile Include="GameField\Abstract\IField.cs" />
+    <Compile Include="GameField\Abstract\IFieldCell.cs" />
+    <Compile Include="GameField\Abstract\IFieldRegion.cs" />
+    <Compile Include="Gameplay\Implementation\DiceManager.cs" />
+    <Compile Include="Game\Abstract\IGameData.cs" />
+    <Compile Include="Players\Abstract\Alignment.cs" />
+    <Compile Include="GameField\Implementation\Field.cs" />
+    <Compile Include="GameField\Implementation\BaseFieldCell.cs" />
+    <Compile Include="GameField\Implementation\FieldRegion.cs" />
     <Compile Include="Game\Abstract\GameState.cs" />
-    <Compile Include="Game\Abstract\GameData.cs" />
-    <Compile Include="Game\Abstract\Player.cs" />
-    <Compile Include="Game\Abstract\PlayerStats.cs" />
+    <Compile Include="Game\Implementation\GameData.cs" />
+    <Compile Include="Players\Abstract\IPlayer.cs" />
+    <Compile Include="Players\Abstract\IPlayerStats.cs" />
+    <Compile Include="Players\Implementation\Player.cs" />
+    <Compile Include="Players\Implementation\PlayerStats.cs" />
+    <Compile Include="Players\Abstract\PlayerTurnState.cs" />
+    <Compile Include="Global\Abstract\EventType.cs" />
+    <Compile Include="Global\Abstract\IIdentifiable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Decks\Implementation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

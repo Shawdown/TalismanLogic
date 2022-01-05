@@ -1,4 +1,6 @@
-﻿namespace Talisman.Game.Logic.Implementation
+﻿using Talisman.Logic.Core.Game.Implementation;
+
+namespace Talisman.Game.Logic.Implementation
 {
     /// <summary>
     /// Global application context.
@@ -6,8 +8,8 @@
     public static class GlobalContext
     {
         /// <summary>
-        /// Current game.
+        /// Current game's data.
         /// </summary>
-        public static Game Game { get; set; }
+        public static GameData Game { get; set; }
     }
 }
