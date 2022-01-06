@@ -1,47 +1,48 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Talisman.Game.Logic.Tests.TestComponents;
+using Talisman.Logic.Core.Cards.Implementation;
 using Talisman.Logic.Core.Decks.Implementation;
-using Talisman.Logic.Core.Gameplay.Implementation;
 using Talisman.Logic.Core.Players.Implementation;
 
 namespace Talisman.Game.Logic.Tests.Cards;
 
 /// <summary>
-/// Tests for class <see cref="CardManager"/>.
+/// Tests for class <see cref="CardUtils"/>.
 /// </summary>
 [TestClass]
-public class CardManagerTests
+public class CardUtilsTests
 {
     /// <summary>
-    /// Discards a valid discardable Card using method <see cref="CardManager.Discard"/>.
+    /// Burns a previously owned Card using method <see cref="CardUtils.BurnCard"/>.
     /// </summary>
     [TestMethod]
-    public void Discard_DiscardableCardTest()
+    public void Burn_OkTest()
     {
         // Arrange
-        Player player = new Player();
+        Player currentOwner = new Player();
         Deck deck = new Deck();
-        Deck discardDeck = new Deck();
-        TestBaseCard card = new TestBaseCard(deck, discardDeck)
+        Deck burntCardsDeck = new Deck();
+        TestBaseCard card = new TestBaseCard(deck, null)
         {
             IsOwnable = true,
-            Owner = player
+            Owner = currentOwner,
+            CurrentDeck = deck
         };
-        player.OwnedCards.Add(card);
+        currentOwner.OwnedCards.Add(card);
 
         // Act
-        CardManager.Discard(null, card);
+        CardUtils.BurnCard(null, card, burntCardsDeck);
 
         // Assert
-        Assert.IsTrue(discardDeck.Cards.Count == 1);
-        Assert.IsTrue(discardDeck.Cards.Contains(card));
-        Assert.IsTrue(!player.OwnedCards.Any());
-        Assert.IsTrue(card.Owner is null);
+        Assert.IsTrue(!currentOwner.OwnedCards.Any());
+        Assert.IsTrue(card.Owner == null);
+        Assert.IsTrue(card.Burnt);
+        Assert.IsTrue(card.CurrentDeck == burntCardsDeck);
     }
 
     /// <summary>
-    /// Sets ownable Card's owner using method <see cref="CardManager.SetCardOwner"/>.
+    /// Sets ownable Card's owner using method <see cref="CardUtils.SetCardOwner"/>.
     /// </summary>
     [TestMethod]
     public void SetOwner_OwnableTest()
@@ -58,7 +59,7 @@ public class CardManagerTests
         currentOwner.OwnedCards.Add(card);
 
         // Act
-        CardManager.SetCardOwner(null, card, newOwner);
+        CardUtils.SetCardOwner(null, card, newOwner);
 
         // Assert
         Assert.IsTrue(!currentOwner.OwnedCards.Any());
@@ -67,7 +68,7 @@ public class CardManagerTests
     }
 
     /// <summary>
-    /// Sets non-ownable Card's owner using method <see cref="CardManager.SetCardOwner"/>.
+    /// Sets non-ownable Card's owner using method <see cref="CardUtils.SetCardOwner"/>.
     /// </summary>
     [TestMethod]
     public void SetOwner_NonOwnableTest()
@@ -81,7 +82,7 @@ public class CardManagerTests
         };
 
         // Act
-        CardManager.SetCardOwner(null, card, newOwner);
+        CardUtils.SetCardOwner(null, card, newOwner);
 
         // Assert
         Assert.IsTrue(!newOwner.OwnedCards.Any());

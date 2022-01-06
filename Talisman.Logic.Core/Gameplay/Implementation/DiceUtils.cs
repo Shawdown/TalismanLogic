@@ -3,9 +3,9 @@
 namespace Talisman.Logic.Core.Gameplay.Implementation;
 
 /// <summary>
-/// Static manager for dice-related operations.
+/// Static utility methods for dice-related operations.
 /// </summary>
-public static class DiceManager
+public static class DiceUtils
 {
     /// <summary>
     /// Pseudo-random number generator.

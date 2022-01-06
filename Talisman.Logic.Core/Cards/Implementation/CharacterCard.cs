@@ -6,7 +6,7 @@ namespace Talisman.Logic.Core.Cards.Implementation;
 /// <summary>
 /// Character card.
 /// </summary>
-public abstract class CharacterCard : BaseCard
+public abstract class CharacterCard : BaseCard, ICharacterCard
 {
     /// <inheritdoc />
     public override CardType Type => CardType.Character;

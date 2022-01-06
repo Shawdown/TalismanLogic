@@ -26,7 +26,10 @@ public abstract class BaseCard : ICard
     public abstract CardType Type { get; }
 
     /// <inheritdoc/>
-    public IDeck Deck { get; }
+    public IDeck OriginalDeck { get; }
+
+    /// <inheritdoc />
+    public IDeck CurrentDeck { get; set; }
 
     /// <inheritdoc/>
     public IDeck DiscardDeck { get; }
@@ -35,20 +38,23 @@ public abstract class BaseCard : ICard
     public IPlayer Owner { get; set; }
 
     /// <inheritdoc />
-    public IFieldCell Cell { get; set; }
+    public IFieldCell FieldCell { get; set; }
+
+    /// <inheritdoc />
+    public bool Burnt { get; set; }
 
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="id">Card's ID.</param>
-    /// <param name="deck">Deck this Card belongs to.</param>
+    /// <param name="deck">OriginalDeck this Card belongs to.</param>
     /// <param name="discardDeck">Discard deck this Card belongs to (null for non-discardable cards).</param>
     /// 
     /// <exception cref="ArgumentNullException"></exception>
     protected BaseCard(int id, IDeck deck, IDeck discardDeck = null)
     {
         Id = id;
-        Deck = deck ?? throw new ArgumentNullException(nameof(deck));
+        OriginalDeck = deck ?? throw new ArgumentNullException(nameof(deck));
         DiscardDeck = discardDeck;
     }
 

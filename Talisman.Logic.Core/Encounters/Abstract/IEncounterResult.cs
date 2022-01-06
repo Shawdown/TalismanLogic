@@ -6,9 +6,7 @@
 public interface IEncounterResult
 {
     /// <summary>
-    /// Specifies whether the encounter was successful in a sense that the player can proceed with their turn (=encounter other cards).
+    /// Specifies whether the encounter was successful in a sense that the player can proceed with their turn (i.e. encounter other cards).
     /// </summary>
     bool IsSuccess { get; set; }
-
-    
 }

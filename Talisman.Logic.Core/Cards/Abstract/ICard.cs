@@ -28,9 +28,14 @@ public interface ICard : IWithId, IEncounterable
     CardType Type { get; }
 
     /// <summary>
-    /// Deck this Card belongs to.
+    /// Original Deck this Card belongs to.
     /// </summary>
-    IDeck Deck { get; }
+    IDeck OriginalDeck { get; }
+
+    /// <summary>
+    /// Current deck this Card belongs to.
+    /// </summary>
+    IDeck CurrentDeck { get; set; }
 
     /// <summary>
     /// Discard deck this Card belongs to.
@@ -45,7 +50,12 @@ public interface ICard : IWithId, IEncounterable
     /// <summary>
     /// Game field cell this card placed on.
     /// </summary>
-    IFieldCell Cell { get; set; }
+    IFieldCell FieldCell { get; set; }
+
+    /// <summary>
+    /// Specifies whether the card is burnt or not.
+    /// </summary>
+    bool Burnt { get; set; }
 
     /// <summary>
     /// Checks whether the player can own this Card.

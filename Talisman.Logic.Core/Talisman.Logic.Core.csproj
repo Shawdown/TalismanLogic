@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encounters\Abstract\EventType.cs" />
+    <Compile Include="Cards\Abstract\ICharacterCard.cs" />
+    <Compile Include="Events\Abstract\EventType.cs" />
     <Compile Include="Encounters\Abstract\IEncounterAction.cs" />
     <Compile Include="Encounters\Implementation\EncounterResult.cs" />
     <Compile Include="Cards\Abstract\ICard.cs" />
@@ -51,16 +52,33 @@
     <Compile Include="Encounters\Abstract\IEncounterResult.cs" />
     <Compile Include="Cards\Implementation\BaseCard.cs" />
     <Compile Include="Decks\Abstract\IDeck.cs" />
-    <Compile Include="Gameplay\Implementation\CardManager.cs" />
+    <Compile Include="Cards\Implementation\CardUtils.cs" />
     <Compile Include="Cards\Implementation\CharacterCard.cs" />
     <Compile Include="Cards\Implementation\MagicObjectBaseCard.cs" />
     <Compile Include="Cards\Implementation\ObjectBaseCard.cs" />
     <Compile Include="Decks\Implementation\Deck.cs" />
     <Compile Include="Decks\Abstract\DeckType.cs" />
+    <Compile Include="Events\Abstract\ICardEvent.cs" />
+    <Compile Include="Events\Abstract\IDeckEvent.cs" />
+    <Compile Include="Events\Abstract\IEvent.cs" />
+    <Compile Include="Events\Abstract\IFieldCellEvent.cs" />
+    <Compile Include="Events\Abstract\IPlayerEvent.cs" />
+    <Compile Include="Events\Abstract\IPlayerStatEvent.cs" />
+    <Compile Include="Events\Implementation\AddCardEvent.cs" />
+    <Compile Include="Events\Implementation\BurnCardEvent.cs" />
+    <Compile Include="Events\Implementation\DiscardCardEvent.cs" />
+    <Compile Include="Events\Implementation\DropCardEvent.cs" />
+    <Compile Include="Events\Implementation\PlaceCardEvent.cs" />
+    <Compile Include="Events\Implementation\WinGameEvent.cs" />
+    <Compile Include="Players\Abstract\PlayerStatValueType.cs" />
+    <Compile Include="Events\Implementation\BaseEvent.cs" />
+    <Compile Include="Events\Implementation\PlayerStatEvent.cs" />
+    <Compile Include="Events\Implementation\TeleportEvent.cs" />
+    <Compile Include="Events\Implementation\TransformEvent.cs" />
     <Compile Include="GameField\Abstract\IField.cs" />
     <Compile Include="GameField\Abstract\IFieldCell.cs" />
     <Compile Include="GameField\Abstract\IFieldRegion.cs" />
-    <Compile Include="Gameplay\Implementation\DiceManager.cs" />
+    <Compile Include="Gameplay\Implementation\DiceUtils.cs" />
     <Compile Include="Game\Abstract\IGameData.cs" />
     <Compile Include="Players\Abstract\Alignment.cs" />
     <Compile Include="GameField\Implementation\Field.cs" />
@@ -69,8 +87,9 @@
     <Compile Include="Game\Abstract\GameState.cs" />
     <Compile Include="Game\Implementation\GameData.cs" />
     <Compile Include="Players\Abstract\IPlayer.cs" />
-    <Compile Include="Players\Abstract\IPlayerStats.cs" />
+    <Compile Include="Players\Implementation\AdditionalPlayerState.cs" />
     <Compile Include="Players\Implementation\Player.cs" />
+    <Compile Include="Players\Implementation\PlayerStatData.cs" />
     <Compile Include="Players\Implementation\PlayerStats.cs" />
     <Compile Include="Players\Abstract\PlayerTurnState.cs" />
     <Compile Include="Global\Abstract\EventType.cs" />

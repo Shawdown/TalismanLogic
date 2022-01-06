@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using Talisman.Logic.Core.Cards.Abstract;
 using Talisman.Logic.Core.Encounters.Abstract;
 using Talisman.Logic.Core.Game.Abstract;
-using Talisman.Logic.Core.Game.Implementation;
 using Talisman.Logic.Core.GameField.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
-using Talisman.Logic.Core.Players.Implementation;
 
 namespace Talisman.Logic.Core.GameField.Implementation;
 

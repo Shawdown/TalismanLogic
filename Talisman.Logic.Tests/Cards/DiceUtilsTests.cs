@@ -6,13 +6,13 @@ using Talisman.Logic.Core.Gameplay.Implementation;
 namespace Talisman.Game.Logic.Tests.Cards;
 
 /// <summary>
-/// Tests for class <see cref="DiceManager"/>.
+/// Tests for class <see cref="DiceUtils"/>.
 /// </summary>
 [TestClass]
-public class DiceManagerTests
+public class DiceUtilsTests
 {
     /// <summary>
-    /// Rolls 100 12-sided dice using method <see cref="DiceManager.RollDice"/> and validates the roll results.
+    /// Rolls 100 12-sided dice using method <see cref="DiceUtils.RollDice"/> and validates the roll results.
     /// </summary>
     [TestMethod]
     public void RollDice_100RollsTest()
@@ -23,7 +23,7 @@ public class DiceManagerTests
         // Act
         for (int i = 0; i < rollResults.Length; i++)
         {
-            rollResults[i] = DiceManager.RollDice(12);
+            rollResults[i] = DiceUtils.RollDice(12);
         }
 
         // Assert
@@ -34,7 +34,7 @@ public class DiceManagerTests
     }
 
     /// <summary>
-    /// Rolls 100 6-sided dice with 2 dice per roll using method <see cref="DiceManager.RollMultipleDice"/> and validates the roll results.
+    /// Rolls 100 6-sided dice with 2 dice per roll using method <see cref="DiceUtils.RollMultipleDice"/> and validates the roll results.
     /// </summary>
     [TestMethod]
     public void RollMultipleDice_50RollsTest()
@@ -45,7 +45,7 @@ public class DiceManagerTests
         // Act
         for (int i = 0; i < 50; i++)
         {
-            rollResults[i] = DiceManager.RollMultipleDice(2, 6);
+            rollResults[i] = DiceUtils.RollMultipleDice(2, 6);
         }
 
         // Assert
@@ -56,7 +56,7 @@ public class DiceManagerTests
     }
 
     /// <summary>
-    /// Calls method <see cref="DiceManager.RollDice"/> providing invalid arguments.
+    /// Calls method <see cref="DiceUtils.RollDice"/> providing invalid arguments.
     /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
@@ -65,7 +65,7 @@ public class DiceManagerTests
         // Arrange
 
         // Act
-        DiceManager.RollDice(0);
+        DiceUtils.RollDice(0);
 
         // Assert
         Assert.Fail($"Exception {nameof(ArgumentException)} has not been thrown.");

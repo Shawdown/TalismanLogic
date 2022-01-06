@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Talisman.Logic.Core.Cards.Abstract;
-using Talisman.Logic.Core.Cards.Implementation;
 using Talisman.Logic.Core.GameField.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
 
@@ -13,13 +12,16 @@ namespace Talisman.Logic.Core.Players.Implementation;
 public class Player : IPlayer
 {
     /// <inheritdoc/>
-    public IPlayerStats Stats { get; } = new PlayerStats();
+    public PlayerStats Stats { get; } = new ();
 
     /// <inheritdoc/>
     public string Name { get; set; }
 
     /// <inheritdoc/>
-    public CharacterCard Character { get; set; }
+    public ICharacterCard Character { get; set; }
+
+    /// <inheritdoc />
+    public AdditionalPlayerState AdditionalPlayerState { get; } = new ();
 
     /// <inheritdoc/>
     public IList<ICard> OwnedCards { get; } = new List<ICard>();

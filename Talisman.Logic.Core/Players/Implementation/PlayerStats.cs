@@ -3,49 +3,62 @@
 namespace Talisman.Logic.Core.Players.Implementation;
 
 /// <summary>
-/// Player stats.
+/// DTO with properties for the player's stats.
 /// </summary>
-public class PlayerStats : IPlayerStats
+public class PlayerStats
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Player's alignment.
+    /// </summary>
     public Alignment Alignment { get; set; }
 
-    /// <inheritdoc />
-    public uint Health { get; set; }
+    /// <summary>
+    /// Player's health.
+    /// </summary>
+    public PlayerStatData Health { get; set; }
 
-    /// <inheritdoc />
-    public uint MinStrength { get; set; }
+    /// <summary>
+    /// Player's strength.
+    /// </summary>
+    public PlayerStatData Strength { get; set; }
 
-    /// <inheritdoc />
-    public uint Strength { get; set; }
+    /// <summary>
+    /// Player's craft.
+    /// </summary>
+    public PlayerStatData Craft { get; set; }
 
-    /// <inheritdoc />
-    public uint MinCraft { get; set; }
+    /// <summary>
+    /// Player's generic fate (when there is no dark/light fate specified in the rules).
+    /// </summary>
+    public PlayerStatData Fate { get; set; }
 
-    /// <inheritdoc />
-    public uint Craft { get; set; }
+    /// <summary>
+    /// Player's dark fate.
+    /// </summary>
+    public PlayerStatData DarkFate { get; set; }
 
-    /// <inheritdoc />
-    public uint Fate { get; set; }
+    /// <summary>
+    /// Player's light fate.
+    /// </summary>
+    public PlayerStatData LightFate { get; set; }
 
-    /// <inheritdoc />
-    public uint DarkFate { get; set; }
+    /// <summary>
+    /// Player's gold.
+    /// </summary>
+    public PlayerStatData Gold { get; set; }
 
-    /// <inheritdoc />
-    public uint LightFate { get; set; }
+    /// <summary>
+    /// Player's objects.
+    /// </summary>
+    public PlayerStatData Objects { get; set; }
 
-    /// <inheritdoc />
-    public uint Gold { get; set; }
+    /// <summary>
+    /// Player's followers.
+    /// </summary>
+    public PlayerStatData Followers { get; set; }
 
-    /// <inheritdoc />
-    public uint MaxItems { get; set; }
-
-    /// <inheritdoc />
-    public uint MaxMagicalItems { get; set; }
-
-    /// <inheritdoc />
-    public uint MaxFollowers { get; set; }
-
-    /// <inheritdoc />
-    public uint MaxSpells { get; set; }
+    /// <summary>
+    /// Player's spells.
+    /// </summary>
+    public PlayerStatData Spells { get; set; }
 }

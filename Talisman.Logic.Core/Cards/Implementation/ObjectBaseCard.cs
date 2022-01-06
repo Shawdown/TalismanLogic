@@ -4,7 +4,6 @@ using Talisman.Logic.Core.Decks.Abstract;
 using Talisman.Logic.Core.Encounters.Abstract;
 using Talisman.Logic.Core.Encounters.Implementation;
 using Talisman.Logic.Core.Game.Abstract;
-using Talisman.Logic.Core.Gameplay.Implementation;
 using Talisman.Logic.Core.Players.Abstract;
 
 namespace Talisman.Logic.Core.Cards.Implementation;

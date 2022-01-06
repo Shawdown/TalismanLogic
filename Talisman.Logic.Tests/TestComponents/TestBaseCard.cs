@@ -3,9 +3,7 @@ using Talisman.Logic.Core.Cards.Implementation;
 using Talisman.Logic.Core.Decks.Implementation;
 using Talisman.Logic.Core.Encounters.Abstract;
 using Talisman.Logic.Core.Game.Abstract;
-using Talisman.Logic.Core.Game.Implementation;
 using Talisman.Logic.Core.Players.Abstract;
-using Talisman.Logic.Core.Players.Implementation;
 
 namespace Talisman.Game.Logic.Tests.TestComponents;
 

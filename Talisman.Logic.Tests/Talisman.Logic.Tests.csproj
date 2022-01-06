@@ -50,8 +50,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cards\CardManagerTests.cs" />
-    <Compile Include="Cards\DiceManagerTests.cs" />
+    <Compile Include="Cards\CardUtilsTests.cs" />
+    <Compile Include="Cards\DiceUtilsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestComponents\TestBaseCard.cs" />
   </ItemGroup>

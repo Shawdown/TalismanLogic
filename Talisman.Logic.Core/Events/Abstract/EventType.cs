@@ -1,7 +1,7 @@
-﻿namespace Talisman.Logic.Core.Encounters.Abstract;
+﻿namespace Talisman.Logic.Core.Events.Abstract;
 
 /// <summary>
-/// Game effect types.
+/// Game event types.
 /// </summary>
 public enum EventType
 {
@@ -11,19 +11,24 @@ public enum EventType
     Teleport,
 
     /// <summary>
-    /// Add a specific number of player's stats.
+    /// Add a specific number of player's stats value.
     /// </summary>
-    AddStats,
+    AddStatValue,
 
     /// <summary>
-    /// Restore a specific number of player's stats.
+    /// Restore a specific number of player's stats value.
     /// </summary>
-    RestoreStats,
+    RestoreStatValue,
 
     /// <summary>
-    /// Remove a specific number of player's stats.
+    /// Remove a specific number of player's stat value.
     /// </summary>
-    RemoveStats,
+    RemoveStatValue,
+
+    /// <summary>
+    /// Updates player's stat value.
+    /// </summary>
+    SetStatValue,
 
     /// <summary>
     /// Give a card to a player.
@@ -36,7 +41,7 @@ public enum EventType
     DropCard,
 
     /// <summary>
-    /// Make a player discard a card.
+    /// Discard a card either from the game cell field or from a player.
     /// </summary>
     DiscardCard,
 
@@ -51,12 +56,17 @@ public enum EventType
     WinGame,
 
     /// <summary>
-    /// Make a player lose the game.
-    /// </summary>
-    LoseGame,
-
-    /// <summary>
     /// Make a player fight a set of enemies.
     /// </summary>
-    FightEnemies
+    Fight,
+
+    /// <summary>
+    /// Burn a card.
+    /// </summary>
+    BurnCard,
+
+    /// <summary>
+    /// Place a card on a game field cell.
+    /// </summary>
+    PlaceCard
 }

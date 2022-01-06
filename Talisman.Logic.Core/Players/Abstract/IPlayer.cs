@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Talisman.Logic.Core.Cards.Abstract;
-using Talisman.Logic.Core.Cards.Implementation;
 using Talisman.Logic.Core.GameField.Abstract;
+using Talisman.Logic.Core.Players.Implementation;
 
 namespace Talisman.Logic.Core.Players.Abstract;
 
@@ -13,7 +13,7 @@ public interface IPlayer
     /// <summary>
     /// Player stats.
     /// </summary>
-    IPlayerStats Stats { get; }
+    PlayerStats Stats { get; }
 
     /// <summary>
     /// Player name.
@@ -23,7 +23,12 @@ public interface IPlayer
     /// <summary>
     /// Player's selected character.
     /// </summary>
-    CharacterCard Character { get; set; }
+    ICharacterCard Character { get; set; }
+
+    /// <summary>
+    /// Additional player state data.
+    /// </summary>
+    AdditionalPlayerState AdditionalPlayerState { get; }
 
     /// <summary>
     /// Cards owned by the player.
