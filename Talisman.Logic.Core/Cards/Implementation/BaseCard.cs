@@ -34,11 +34,11 @@ public abstract class BaseCard : ICard
     /// <inheritdoc/>
     public IDeck DiscardDeck { get; }
 
-    /// <inheritdoc/>
-    public IPlayer Owner { get; set; }
-
     /// <inheritdoc />
     public IFieldCell FieldCell { get; set; }
+
+    /// <inheritdoc />
+    public bool Burnable { get; set; } = true;
 
     /// <inheritdoc />
     public bool Burnt { get; set; }
@@ -57,13 +57,4 @@ public abstract class BaseCard : ICard
         OriginalDeck = deck ?? throw new ArgumentNullException(nameof(deck));
         DiscardDeck = discardDeck;
     }
-
-    /// <inheritdoc/>
-    public virtual bool CanBeOwnedByPlayer(IGameData gameData, IPlayer player) => false;
-
-    /// <inheritdoc/>
-    public virtual bool CanBeDiscardedByPlayer(IGameData gameData, IPlayer player) => false;
-
-    /// <inheritdoc />
-    public abstract IEncounterResult Encounter(IGameData gameData, IPlayer player);
 }

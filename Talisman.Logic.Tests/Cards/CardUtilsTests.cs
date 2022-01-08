@@ -25,17 +25,17 @@ public class CardUtilsTests
         Deck burntCardsDeck = new Deck();
         TestBaseCard card = new TestBaseCard(deck, null)
         {
-            IsOwnable = true,
+            IsPickable = true,
             Owner = currentOwner,
             CurrentDeck = deck
         };
-        currentOwner.OwnedCards.Add(card);
+        currentOwner.Inventory.PickableCards.Add(card);
 
         // Act
         CardUtils.BurnCard(null, card, burntCardsDeck);
 
         // Assert
-        Assert.IsTrue(!currentOwner.OwnedCards.Any());
+        Assert.IsTrue(!currentOwner.Inventory.PickableCards.Any());
         Assert.IsTrue(card.Owner == null);
         Assert.IsTrue(card.Burnt);
         Assert.IsTrue(card.CurrentDeck == burntCardsDeck);
@@ -53,17 +53,17 @@ public class CardUtilsTests
         Deck deck = new Deck();
         TestBaseCard card = new TestBaseCard(deck, null)
         {
-            IsOwnable = true,
+            IsPickable = true,
             Owner = currentOwner
         };
-        currentOwner.OwnedCards.Add(card);
+        currentOwner.Inventory.PickableCards.Add(card);
 
         // Act
         CardUtils.SetCardOwner(null, card, newOwner);
 
         // Assert
-        Assert.IsTrue(!currentOwner.OwnedCards.Any());
-        Assert.IsTrue(newOwner.OwnedCards.Contains(card));
+        Assert.IsTrue(!currentOwner.Inventory.PickableCards.Any());
+        Assert.IsTrue(newOwner.Inventory.PickableCards.Contains(card));
         Assert.IsTrue(card.Owner == newOwner);
     }
 
@@ -78,14 +78,14 @@ public class CardUtilsTests
         Deck deck = new Deck();
         TestBaseCard card = new TestBaseCard(deck, null)
         {
-            IsOwnable = false,
+            IsPickable = false,
         };
 
         // Act
         CardUtils.SetCardOwner(null, card, newOwner);
 
         // Assert
-        Assert.IsTrue(!newOwner.OwnedCards.Any());
+        Assert.IsTrue(!newOwner.Inventory.PickableCards.Any());
         Assert.IsTrue(card.Owner is null);
     }
 }

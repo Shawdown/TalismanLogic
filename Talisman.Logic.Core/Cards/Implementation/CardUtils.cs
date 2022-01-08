@@ -16,22 +16,20 @@ public static class CardUtils
     /// </summary>
     /// 
     /// <param name="gameData">Current game's data.</param>
-    /// <param name="card">BaseCard to change ownership of.</param>
+    /// <param name="card">Card to change ownership of.</param>
     /// <param name="player">Player to be set as an owner (can be null if the Card lost its owner).</param>
-    public static void SetCardOwner(IGameData gameData, ICard card, IPlayer player)
+    public static void SetCardOwner(IGameData gameData, IPickableCard card, IPlayer player)
     {
         if (card == null) throw new ArgumentNullException(nameof(card));
 
-        if ((player != null && !card.CanBeOwnedByPlayer(gameData, player)) || card.Owner == player)
+        if ((player != null && !card.CanBePickedUpByPlayer(gameData, player)) || card.Owner == player)
         {
+            // Player either cannot own this card or is already set as its owner.
             return;
         }
-        else if (card.Owner != null)
-        {
-            card.Owner.OwnedCards.Remove(card);
-        }
-        
-        player?.OwnedCards.Add(card);
+
+        card.Owner?.Inventory.PickableCards.Remove(card);
+        player?.Inventory.PickableCards.Add(card);
         card.Owner = player;
     }
 
@@ -47,7 +45,10 @@ public static class CardUtils
         if (card == null) throw new ArgumentNullException(nameof(card));
         if (burntCardsDeck == null) throw new ArgumentNullException(nameof(burntCardsDeck));
 
-        SetCardOwner(gameData, card, null);
+        if (card is IPickableCard pickableCard)
+        {
+            SetCardOwner(gameData, pickableCard, null);
+        }
 
         card.Burnt = true;
         burntCardsDeck.Cards.Add(card);

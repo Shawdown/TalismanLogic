@@ -1,4 +1,7 @@
-﻿namespace Talisman.Logic.Core.Events.Abstract;
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace Talisman.Logic.Core.Events.Abstract;
 
 /// <summary>
 /// Defines properties to be used by classes representing game events.
@@ -13,5 +16,7 @@ public interface IEvent
     /// <summary>
     /// Event execution logic.
     /// </summary>
-    void Execute();
+    ///
+    /// <returns>Optional collection of events to be executed after this event.</returns>
+    IEnumerable<IEvent> Execute();
 }

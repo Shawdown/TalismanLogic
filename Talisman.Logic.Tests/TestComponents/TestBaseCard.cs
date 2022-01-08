@@ -10,18 +10,15 @@ namespace Talisman.Game.Logic.Tests.TestComponents;
 /// <summary>
 /// BaseCard class to be used for unit-testing.
 /// </summary>
-public class TestBaseCard : BaseCard
+public class TestBaseCard : BasePickableCard
 {
     /// <summary>
-    /// Specified whether the Card can be owned by a player.
+    /// Specified whether the Card can be picked up by a player.
     /// </summary>
-    public bool IsOwnable { get; set; } = false;
+    public bool IsPickable { get; set; } = false;
 
     /// <inheritdoc />
     public override CardType Type => CardType.MagicObject;
-
-    /// <inheritdoc />
-    public override bool CanBeOwnedByPlayer(IGameData gameData, IPlayer player) => IsOwnable;
 
     /// <inheritdoc />
     public TestBaseCard(Deck deck, Deck discardDeck = null) : base(1, deck, discardDeck)
@@ -29,5 +26,5 @@ public class TestBaseCard : BaseCard
     }
 
     /// <inheritdoc />
-    public override IEncounterResult Encounter(IGameData gameData, IPlayer player) => throw new System.NotImplementedException();
+    public override bool CanBePickedUpByPlayer(IGameData gameData, IPlayer player) => IsPickable;
 }

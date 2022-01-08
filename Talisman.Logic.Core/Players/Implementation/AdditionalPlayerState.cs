@@ -8,6 +8,11 @@ namespace Talisman.Logic.Core.Players.Implementation;
 public class AdditionalPlayerState
 {
     /// <summary>
+    /// Specified whether the player can be transformed or not.
+    /// </summary>
+    public bool CanBeTransformed { get; set; }
+
+    /// <summary>
     /// Character the player is currently transformed into.
     /// </summary>
     public ICharacterCard TransformedCharacter { get; set; }

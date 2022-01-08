@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Talisman.Logic.Core.Events.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
 using Talisman.Logic.Core.Players.Implementation;
@@ -48,7 +50,7 @@ public class PlayerStatEvent : BaseEvent, IPlayerStatEvent
     /// <summary>
     /// Modifies the relevant player stat value based on the event's data.
     /// </summary>
-    public override void Execute()
+    public override IEnumerable<IEvent> Execute()
     {
         switch (EventType)
         {
@@ -67,6 +69,8 @@ public class PlayerStatEvent : BaseEvent, IPlayerStatEvent
             default:
                 throw new ArgumentOutOfRangeException(nameof(EventType), EventType, null);
         }
+
+        return Enumerable.Empty<IEvent>();
     }
 
     /// <summary>

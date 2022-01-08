@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Talisman.Logic.Core.Cards.Abstract;
 using Talisman.Logic.Core.Cards.Implementation;
 using Talisman.Logic.Core.Decks.Abstract;
 using Talisman.Logic.Core.Events.Abstract;
+using Talisman.Logic.Core.Players.Abstract;
 
 namespace Talisman.Logic.Core.Events.Implementation;
 
 /// <summary>
 /// Represents a game card burn event.
 /// </summary>
-public class BurnCardEvent : BaseEvent, ICardEvent, IDeckEvent
+public class BurnCardEvent : BaseEvent, ICardEvent<ICard>, IDeckEvent
 {
     /// <inheritdoc />
     public override EventType EventType => EventType.BurnCard;
@@ -37,12 +40,26 @@ public class BurnCardEvent : BaseEvent, ICardEvent, IDeckEvent
     /// <summary>
     /// Removes the card from its owner's inventory (if set), sets its <see cref="ICard.Burnt"/> to true and sets its <see cref="ICard.CurrentDeck"/> to <see cref="TargetDeck"/>.
     /// </summary>
-    public override void Execute()
+    public override IEnumerable<IEvent> Execute()
     {
-        CardUtils.SetCardOwner(null, TargetCard, null);
+        if (!TargetCard.Burnable)
+        {
+            // Card cannot be burnt.
+            return Enumerable.Empty<IEvent>();
+        }
 
         TargetCard.Burnt = true;
         TargetDeck.Cards.Add(TargetCard);
         TargetCard.CurrentDeck = TargetDeck;
+
+        if (TargetCard is IPickableCard pickableCard)
+        {
+            IPlayer previousCardOwner = pickableCard.Owner;
+            CardUtils.SetCardOwner(null, pickableCard, null);
+
+            return pickableCard.GetDropEvents(null, previousCardOwner);
+        }
+
+        return Enumerable.Empty<IEvent>();
     }
 }

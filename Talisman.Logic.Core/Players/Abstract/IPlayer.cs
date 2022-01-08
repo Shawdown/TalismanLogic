@@ -8,12 +8,12 @@ namespace Talisman.Logic.Core.Players.Abstract;
 /// <summary>
 /// Defines properties and methods to be used by classes representing a player.
 /// </summary>
-public interface IPlayer
+public interface IPlayer : IFightable
 {
     /// <summary>
     /// Player stats.
     /// </summary>
-    PlayerStats Stats { get; }
+    IEnumerable<PlayerStatData> PlayerStats { get; }
 
     /// <summary>
     /// Player name.
@@ -31,9 +31,9 @@ public interface IPlayer
     AdditionalPlayerState AdditionalPlayerState { get; }
 
     /// <summary>
-    /// Cards owned by the player.
+    /// Player's inventory.
     /// </summary>
-    IList<ICard> OwnedCards { get; }
+    PlayerInventory Inventory { get; }
 
     /// <summary>
     /// Game field cell the player stays on.
@@ -48,4 +48,16 @@ public interface IPlayer
     /// 
     /// <returns>true if the player answered yes, false otherwise.</returns>
     bool AskYesOrNo(string question = null);
+
+    /// <summary>
+    /// Gets a set of dice roll results from the player.
+    /// </summary>
+    /// 
+    /// <param name="numberOfDice">Number of dice to roll.</param>
+    /// <param name="diceSidesCount">Number of sides on each dice.</param>
+    /// 
+    /// <returns>Array of dice roll results for each dice rolled.</returns>
+    int[] GetDiceRolls(int numberOfDice = 1, int diceSidesCount = 6);
+
+
 }

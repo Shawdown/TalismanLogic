@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Talisman.Logic.Core.Events.Abstract;
 using Talisman.Logic.Core.GameField.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
@@ -39,8 +41,10 @@ public class TeleportEvent : BaseEvent, IPlayerEvent
     /// <summary>
     /// Changes TargetPlayer's <see cref="IPlayer.FieldCell"/> to <see cref="TargetCell"/>.
     /// </summary>
-    public override void Execute()
+    public override IEnumerable<IEvent> Execute()
     {
         TargetPlayer.FieldCell = TargetCell;
+
+        return Enumerable.Empty<IEvent>();
     }
 }

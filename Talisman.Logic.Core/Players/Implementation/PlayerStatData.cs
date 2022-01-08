@@ -1,4 +1,5 @@
 ﻿using System;
+using Talisman.Logic.Core.Gameplay.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
 
 namespace Talisman.Logic.Core.Players.Implementation;
@@ -8,6 +9,11 @@ namespace Talisman.Logic.Core.Players.Implementation;
 /// </summary>
 public class PlayerStatData
 {
+    /// <summary>
+    /// Stat type.
+    /// </summary>
+    public StatType StatType { get; set; }
+
     /// <summary>
     /// Minimum stat value.
     /// </summary>
@@ -24,27 +30,34 @@ public class PlayerStatData
     public uint CurrentValue { get; set; }
 
     /// <summary>
+    /// Specifies whether the player can initiate a battle with another player using this stat.
+    /// </summary>
+    public bool CanBeUsedForCombat { get; set; }
+
+    /// <summary>
     /// Constructor.
     /// </summary>
     /// 
+    /// <param name="statType">Stat type.</param>
     /// <param name="maxValue">Maximal stat value.</param>
     /// <param name="currentValue">Current stat value</param>
     /// <param name="minValue">Minimum stat value.</param>
-    public PlayerStatData(uint maxValue, uint currentValue, uint minValue = 0)
+    /// <param name="canBeUsedForCombat">Specifies whether the player can initiate a battle with another player using this stat.</param>
+    public PlayerStatData(StatType statType, uint maxValue, uint currentValue, uint minValue = 0, bool canBeUsedForCombat = false)
     {
+        StatType = statType;
         MaxValue = maxValue;
         CurrentValue = currentValue;
         MinValue = minValue;
+        CanBeUsedForCombat = canBeUsedForCombat;
     }
 
     /// <summary>
     /// Constructor.
     /// </summary>
-    public PlayerStatData()
+    public PlayerStatData(StatType statType)
     {
-        MaxValue = 0;
-        CurrentValue = 0;
-        MinValue = 0;
+        StatType = statType;
     }
 
     /// <summary>

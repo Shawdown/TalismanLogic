@@ -1,4 +1,5 @@
-﻿using Talisman.Logic.Core.Events.Abstract;
+﻿using System.Collections.Generic;
+using Talisman.Logic.Core.Events.Abstract;
 
 namespace Talisman.Logic.Core.Events.Implementation;
 
@@ -11,5 +12,5 @@ public abstract class BaseEvent : IEvent
     public abstract EventType EventType { get; }
 
     /// <inheritdoc />
-    public abstract void Execute();
+    public abstract IEnumerable<IEvent> Execute();
 }

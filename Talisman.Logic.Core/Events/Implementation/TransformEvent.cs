@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Talisman.Logic.Core.Cards.Abstract;
 using Talisman.Logic.Core.Events.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
@@ -47,14 +49,14 @@ public class TransformEvent : BaseEvent, IPlayerEvent
     /// Changes TargetPlayer's <see cref="AdditionalPlayerState.TransformedCharacter"/> to <see cref="TransformedCharacter"/>
     /// and sets <see cref="AdditionalPlayerState.TransformTurnsLeft"/> to <see cref="TransformTurns"/>.
     /// </summary>
-    public override void Execute()
+    public override IEnumerable<IEvent> Execute()
     {
-        if (TransformTurns < 1)
+        if (TargetPlayer.AdditionalPlayerState.CanBeTransformed && TransformTurns > 0)
         {
-            return;
+            TargetPlayer.AdditionalPlayerState.TransformedCharacter = TransformedCharacter;
+            TargetPlayer.AdditionalPlayerState.TransformTurnsLeft = TransformTurns;
         }
 
-        TargetPlayer.AdditionalPlayerState.TransformedCharacter = TransformedCharacter;
-        TargetPlayer.AdditionalPlayerState.TransformTurnsLeft = TransformTurns;
+        return Enumerable.Empty<IEvent>();
     }
 }

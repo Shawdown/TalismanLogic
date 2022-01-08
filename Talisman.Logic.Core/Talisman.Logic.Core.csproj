@@ -42,7 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combat\Implementation\FighterData.cs" />
+    <Compile Include="Events\Abstract\IFightEvent.cs" />
+    <Compile Include="Events\Implementation\FightEnemiesEvent.cs" />
+    <Compile Include="Gameplay\Abstract\StatType.cs" />
+    <Compile Include="Cards\Abstract\EnemyType.cs" />
     <Compile Include="Cards\Abstract\ICharacterCard.cs" />
+    <Compile Include="Cards\Abstract\IEnemyCard.cs" />
+    <Compile Include="Cards\Abstract\IFightable.cs" />
+    <Compile Include="Cards\Abstract\IPickable.cs" />
+    <Compile Include="Cards\Implementation\BasePickableCard.cs" />
+    <Compile Include="Combat\Abstract\CombatResult.cs" />
+    <Compile Include="Combat\Implementation\CombatInfo.cs" />
     <Compile Include="Events\Abstract\EventType.cs" />
     <Compile Include="Encounters\Abstract\IEncounterAction.cs" />
     <Compile Include="Encounters\Implementation\EncounterResult.cs" />
@@ -54,8 +65,6 @@
     <Compile Include="Decks\Abstract\IDeck.cs" />
     <Compile Include="Cards\Implementation\CardUtils.cs" />
     <Compile Include="Cards\Implementation\CharacterCard.cs" />
-    <Compile Include="Cards\Implementation\MagicObjectBaseCard.cs" />
-    <Compile Include="Cards\Implementation\ObjectBaseCard.cs" />
     <Compile Include="Decks\Implementation\Deck.cs" />
     <Compile Include="Decks\Abstract\DeckType.cs" />
     <Compile Include="Events\Abstract\ICardEvent.cs" />
@@ -89,8 +98,8 @@
     <Compile Include="Players\Abstract\IPlayer.cs" />
     <Compile Include="Players\Implementation\AdditionalPlayerState.cs" />
     <Compile Include="Players\Implementation\Player.cs" />
+    <Compile Include="Players\Implementation\PlayerInventory.cs" />
     <Compile Include="Players\Implementation\PlayerStatData.cs" />
-    <Compile Include="Players\Implementation\PlayerStats.cs" />
     <Compile Include="Players\Abstract\PlayerTurnState.cs" />
     <Compile Include="Global\Abstract\EventType.cs" />
     <Compile Include="Global\Abstract\IIdentifiable.cs" />

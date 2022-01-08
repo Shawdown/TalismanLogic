@@ -17,6 +17,7 @@ public enum CardType
     Place,
     Stranger,
     Denizen,
+    Enemy,
 
     // Cannot be found in adventure decks; can be obtained by the player.
     Path,

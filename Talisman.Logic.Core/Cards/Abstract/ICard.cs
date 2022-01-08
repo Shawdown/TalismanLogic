@@ -1,5 +1,8 @@
-﻿using Talisman.Logic.Core.Decks.Abstract;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Talisman.Logic.Core.Decks.Abstract;
 using Talisman.Logic.Core.Encounters.Abstract;
+using Talisman.Logic.Core.Events.Abstract;
 using Talisman.Logic.Core.Game.Abstract;
 using Talisman.Logic.Core.GameField.Abstract;
 using Talisman.Logic.Core.Global.Abstract;
@@ -10,7 +13,7 @@ namespace Talisman.Logic.Core.Cards.Abstract;
 /// <summary>
 /// Defines properties and methods of all game cards.
 /// </summary>
-public interface ICard : IWithId, IEncounterable
+public interface ICard : IWithId
 {
     /// <summary>
     /// Card's name.
@@ -43,41 +46,17 @@ public interface ICard : IWithId, IEncounterable
     IDeck DiscardDeck { get; }
 
     /// <summary>
-    /// Current owner of this Card.
-    /// </summary>
-    IPlayer Owner { get; set; }
-
-    /// <summary>
     /// Game field cell this card placed on.
     /// </summary>
     IFieldCell FieldCell { get; set; }
 
     /// <summary>
+    /// Specified whether the card can be burnt or not.
+    /// </summary>
+    bool Burnable { get; set; }
+
+    /// <summary>
     /// Specifies whether the card is burnt or not.
     /// </summary>
     bool Burnt { get; set; }
-
-    /// <summary>
-    /// Checks whether the player can own this Card.
-    /// </summary>
-    ///
-    /// <remarks>This method should always return false for non-ownable cards.</remarks>
-    /// 
-    /// <param name="gameData">Current game's data.</param>
-    /// <param name="player">Player to be checked.</param>
-    /// 
-    /// <returns>true if the player <paramref name="player"/> can own this Card; false otherwise.</returns>
-    bool CanBeOwnedByPlayer(IGameData gameData, IPlayer player);
-
-    /// <summary>
-    /// Checks whether the player can discard this Card.
-    /// </summary>
-    ///
-    /// <remarks>This method should always return false for non-ownable cards.</remarks>
-    /// 
-    /// <param name="gameData">Current game's data.</param>
-    /// <param name="player">Player to be checked.</param>
-    /// 
-    /// <returns>true if the player <paramref name="player"/> can discard this Card; false otherwise.</returns>
-    bool CanBeDiscardedByPlayer(IGameData gameData, IPlayer player);
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Talisman.Logic.Core.Events.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
 
@@ -28,8 +30,10 @@ public class WinGameEvent : BaseEvent, IPlayerEvent
     }
 
     /// <inheritdoc />
-    public override void Execute()
+    public override IEnumerable<IEvent> Execute()
     {
         TargetPlayer.AdditionalPlayerState.Won = true;
+
+        return Enumerable.Empty<IEvent>();
     }
 }

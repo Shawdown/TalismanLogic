@@ -58,7 +58,12 @@ public enum EventType
     /// <summary>
     /// Make a player fight a set of enemies.
     /// </summary>
-    Fight,
+    FightEnemies,
+
+    /// <summary>
+    /// Make a player fight another player.
+    /// </summary>
+    FightPlayer,
 
     /// <summary>
     /// Burn a card.
