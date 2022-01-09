@@ -16,6 +16,9 @@ namespace Talisman.Logic.Core.Players.Implementation;
 /// </summary>
 public class Player : IPlayer
 {
+    /// <inheritdoc />
+    public PlayerTurnState TurnState { get; set; }
+
     /// <inheritdoc/>
     public IEnumerable<PlayerStatData> PlayerStats { get; set; }
 
@@ -55,21 +58,44 @@ public class Player : IPlayer
 
         if (currentStatValue is null)
         {
-            throw new InvalidOperationException($"This Player has no stat specified with type {combatInfo.CombatStatType}.");
+            throw new InvalidOperationException($"This Player has no stat specified with type [{combatInfo.CombatStatType}].");
         }
 
         return (int)currentStatValue;
     }
 
     /// <inheritdoc />
-    public bool CanRollCombatDice(CombatInfo combatInfo) => throw new NotImplementedException();
-
-    /// <inheritdoc />
     public int[] GetCombatDiceRolls(CombatInfo combatInfo) => throw new NotImplementedException();
 
     /// <inheritdoc />
-    public IEnumerable<IEvent> GetPreCombatEvents(CombatInfo combatInfo) => throw new NotImplementedException();
+    public StatType GetCombatStatTypeForBattle(CombatInfo combatInfo)
+    {
+        if (!combatInfo.Attackers.Any(fd => fd.Fighter == this))
+        {
+            throw new InvalidOperationException("This method should only be called for the attackers.");
+        }
+
+        // Picking the first available combat stat.
+        foreach (var enemyStatType in combatInfo.Defenders.First().Fighter.CombatStatTypes)
+        {
+            if (CombatStatTypes.Contains(enemyStatType))
+            {
+                return enemyStatType;
+            }
+        }
+
+        throw new InvalidOperationException("Not a single common combat stat found for this combat.");
+    }
 
     /// <inheritdoc />
-    public IEnumerable<IEvent> GetPostCombatEvents(CombatInfo combatInfo) => throw new NotImplementedException();
+    public IEnumerable<IEvent> GetPreCombatEvents(CombatInfo combatInfo) => Enumerable.Empty<IEvent>();
+
+    /// <inheritdoc />
+    public IEnumerable<IEvent> GetPostCombatEvents(CombatInfo combatInfo) => Enumerable.Empty<IEvent>();
+
+    /// <inheritdoc />
+    public IEnumerable<IEvent> GetOpponentCombatDiceRollEvents(CombatInfo combatInfo, int[] opponentCombatDiceRolls) => Enumerable.Empty<IEvent>();
+
+    /// <inheritdoc />
+    public IEnumerable<IEvent> GetCombatDiceRollEvents(CombatInfo combatInfo, int[] combatDiceRolls) => Enumerable.Empty<IEvent>();
 }

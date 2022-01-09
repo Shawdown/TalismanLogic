@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using Talisman.Logic.Core.Cards.Abstract;
 
 namespace Talisman.Logic.Core.Combat.Implementation;
@@ -12,6 +14,21 @@ public class FighterData
     /// Combat participant.
     /// </summary>
     public IFightable Fighter { get; }
+
+    /// <summary>
+    /// Specifies whether this object can roll combat dice or not.
+    /// </summary>
+    public bool CanRollCombatDice { get; set; }
+
+    /// <summary>
+    /// Combat roll results.
+    /// </summary>
+    public int[] CombatDiceRollResults { get; set; }
+
+    /// <summary>
+    /// Combat power modifiers affecting <see cref="Fighter"/>.
+    /// </summary>
+    public ICollection<int> CombatPowerModifiers { get; } = new List<int>();
 
     /// <summary>
     /// Constructor.

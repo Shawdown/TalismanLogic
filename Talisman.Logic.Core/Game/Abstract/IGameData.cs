@@ -25,11 +25,6 @@ public interface IGameData
     IPlayer CurrentPlayer { get; set; }
 
     /// <summary>
-    /// State of the current player's turn.
-    /// </summary>
-    PlayerTurnState CurrentTurnState { get; set; }
-
-    /// <summary>
     /// Game field.
     /// </summary>
     IField Field { get; set; }

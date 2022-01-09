@@ -56,14 +56,24 @@ public enum EventType
     WinGame,
 
     /// <summary>
+    /// Kill a player.
+    /// </summary>
+    KillPlayer,
+
+    /// <summary>
     /// Make a player fight a set of enemies.
     /// </summary>
-    FightEnemies,
+    FightEnemyCards,
 
     /// <summary>
     /// Make a player fight another player.
     /// </summary>
     FightPlayer,
+
+    /// <summary>
+    /// End the combat.
+    /// </summary>
+    CombatEnd,
 
     /// <summary>
     /// Burn a card.

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Talisman.Logic.Core.Events.Abstract;
+using Talisman.Logic.Core.Gameplay.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
 using Talisman.Logic.Core.Players.Implementation;
 
@@ -68,6 +69,12 @@ public class PlayerStatEvent : BaseEvent, IPlayerStatEvent
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(EventType), EventType, null);
+        }
+
+        if (TargetStatData.StatType == StatType.Health && TargetStatData.CurrentValue == 0)
+        {
+            // Player has died.
+            return new List<IEvent> { new KillPlayerEvent(TargetPlayer) };
         }
 
         return Enumerable.Empty<IEvent>();

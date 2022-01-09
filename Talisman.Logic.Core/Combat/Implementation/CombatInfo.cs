@@ -35,4 +35,48 @@ public class CombatInfo
     /// </summary>
     public IFieldCell FieldCell { get; set; }
 
+    /// <summary>
+    /// Calculates the combat result and updates the related property <see cref="CombatResult"/>.
+    /// </summary>
+    public void CalculateCombatResult()
+    {
+        int attackersPower = CalculateFinalPower(Attackers);
+        int defendersPower = CalculateFinalPower(Defenders);
+
+        CombatResult = attackersPower > defendersPower ? CombatResult.AttackersWon :
+                       defendersPower > attackersPower ? CombatResult.DefendersWon :
+                       CombatResult.Draw;
+    }
+
+    /// <summary>
+    /// Calculates the final power value of all fighters in the specified set.
+    /// </summary>
+    /// 
+    /// <param name="fighterDatas">Fighters which sum power needs to be calculated.</param>
+    /// 
+    /// <returns>Total power of fighters in <paramref name="fighterDatas"/></returns>
+    private int CalculateFinalPower(IEnumerable<FighterData> fighterDatas)
+    {
+        int powerTotal = 0;
+
+        foreach (var fd in fighterDatas)
+        {
+            // Getting base combat power.
+            powerTotal += fd.Fighter.GetBaseCombatPower(this);
+
+            // Applying power modifiers.
+            foreach (var modifier in fd.CombatPowerModifiers)
+            {
+                powerTotal += modifier;
+            }
+
+            // Adding combat dice roll results.
+            foreach (int combatDiceRoll in fd.CombatDiceRollResults)
+            {
+                powerTotal += combatDiceRoll;
+            }
+        }
+
+        return powerTotal;
+    }
 }

@@ -43,8 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combat\Implementation\FighterData.cs" />
-    <Compile Include="Events\Abstract\IFightEvent.cs" />
-    <Compile Include="Events\Implementation\FightEnemiesEvent.cs" />
+    <Compile Include="Events\Abstract\ICombatEvent.cs" />
+    <Compile Include="Events\Abstract\IFightEnemyCardsEvent.cs" />
+    <Compile Include="Events\Implementation\CombatEndEvent.cs" />
+    <Compile Include="Events\Implementation\EventUtils.cs" />
+    <Compile Include="Events\Implementation\FightEnemyCardsEvent.cs" />
+    <Compile Include="Events\Implementation\KillPlayerEvent.cs" />
     <Compile Include="Gameplay\Abstract\StatType.cs" />
     <Compile Include="Cards\Abstract\EnemyType.cs" />
     <Compile Include="Cards\Abstract\ICharacterCard.cs" />

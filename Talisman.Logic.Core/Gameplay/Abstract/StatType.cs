@@ -10,5 +10,6 @@ public enum StatType
     Fate,
     LightFate,
     DarkFate,
-    Gold
+    Gold,
+    Health
 }

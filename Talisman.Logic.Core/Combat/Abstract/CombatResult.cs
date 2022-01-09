@@ -6,7 +6,7 @@
 public enum CombatResult
 {
     Null,
-    PlayerLost,
-    PlayerWon,
+    AttackersWon,
+    DefendersWon,
     Draw
 }

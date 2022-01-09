@@ -6,7 +6,7 @@ namespace Talisman.Logic.Core.Events.Abstract;
 /// <summary>
 /// Defines properties to be used by classes representing events targeting a player and a set of <see cref="IFightable"/> instances that the player must fight.
 /// </summary>
-public interface IFightEvent : IPlayerEvent
+public interface IFightEnemyCardsEvent : IPlayerEvent
 {
     /// <summary>
     /// A collection of enemies for the player to fight.

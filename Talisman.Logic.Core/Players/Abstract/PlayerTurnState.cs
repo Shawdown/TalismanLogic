@@ -6,11 +6,15 @@
 public enum PlayerTurnState
 {
     Null,
+    WaitingForTurn,
     CharacterSelect,
     DragonScaleDraw,
-    MovementRoll,
-    Movement,
-    SpaceEncounter,
-    DragonScaleEncounter,
+    DragonWrathEncounter,
+    PreMovementRoll,
+    PostMovementRolll,
+    PreFieldCellEncounter,
+    FieldCellEncounter,
+    PreCombatRoll,
+    PostCombatRoll,
     End
 }

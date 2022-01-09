@@ -30,15 +30,6 @@ public interface IFightable
     int GetBaseCombatPower(CombatInfo combatInfo);
 
     /// <summary>
-    /// Gets whether the fighter is able to roll combat dice or not.
-    /// </summary>
-    /// 
-    /// <param name="combatInfo">Combat data.</param>
-    /// 
-    /// <returns>true if the fighter is able to roll combat dice, false otherwise.</returns>
-    bool CanRollCombatDice(CombatInfo combatInfo);
-
-    /// <summary>
     /// Gets fighter's combat dice roll results.
     /// </summary>
     /// 
@@ -46,6 +37,17 @@ public interface IFightable
     /// 
     /// <returns>An array of the fighter's combat dice roll results.</returns>
     int[] GetCombatDiceRolls(CombatInfo combatInfo);
+
+    /// <summary>
+    /// Gets combat stat type to be used in combat.
+    /// </summary>
+    ///
+    /// <remarks>This method should be used to obtain the desired combat stat type from the attacker.</remarks>
+    /// 
+    /// <param name="combatInfo">Combat data.</param>
+    /// 
+    /// <returns>Stat type to be used in combat.</returns>
+    StatType GetCombatStatTypeForBattle(CombatInfo combatInfo);
 
     /// <summary>
     /// Gets pre-combat events need to be executed before the start of combat.
@@ -64,4 +66,24 @@ public interface IFightable
     /// 
     /// <returns>Collection of events to be executed in the provided order before the start of combat.</returns>
     IEnumerable<IEvent> GetPostCombatEvents(CombatInfo combatInfo);
+
+    /// <summary>
+    /// Gets events need to be executed after the opponent has rolled the combat dice.
+    /// </summary>
+    /// 
+    /// <param name="combatInfo">Combat data.</param>
+    /// <param name="opponentCombatDiceRolls">Opponent combat dice roll results.</param>
+    /// 
+    /// <returns>Collection of events to be executed in the provided order after the opponent has rolled the combat dice.</returns>
+    IEnumerable<IEvent> GetOpponentCombatDiceRollEvents(CombatInfo combatInfo, int[] opponentCombatDiceRolls);
+
+    /// <summary>
+    /// Gets events need to be executed after this entity has rolled the combat dice.
+    /// </summary>
+    /// 
+    /// <param name="combatInfo">Combat data.</param>
+    /// <param name="combatDiceRolls">Combat dice roll results.</param>
+    /// 
+    /// <returns>Collection of events to be executed in the provided order after this entity has rolled the combat dice.</returns>
+    IEnumerable<IEvent> GetCombatDiceRollEvents(CombatInfo combatInfo, int[] combatDiceRolls);
 }

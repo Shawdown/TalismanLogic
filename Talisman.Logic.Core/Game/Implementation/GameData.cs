@@ -20,8 +20,5 @@ public class GameData : IGameData
     public IPlayer CurrentPlayer { get; set; }
 
     /// <inheritdoc />
-    public PlayerTurnState CurrentTurnState { get; set; } = PlayerTurnState.Null;
-
-    /// <inheritdoc />
     public IField Field { get; set; }
 }

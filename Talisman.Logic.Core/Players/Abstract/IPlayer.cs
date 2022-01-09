@@ -11,6 +11,11 @@ namespace Talisman.Logic.Core.Players.Abstract;
 public interface IPlayer : IFightable
 {
     /// <summary>
+    /// Player turn state.
+    /// </summary>
+    PlayerTurnState TurnState { get; set; }
+
+    /// <summary>
     /// Player stats.
     /// </summary>
     IEnumerable<PlayerStatData> PlayerStats { get; }
