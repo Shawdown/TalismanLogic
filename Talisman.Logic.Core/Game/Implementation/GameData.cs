@@ -8,17 +8,25 @@ namespace Talisman.Logic.Core.Game.Implementation;
 /// <summary>
 /// Contains information about the current game.
 /// </summary>
-public class GameData : IGameData
+public class GameData
 {
-    /// <inheritdoc />
-    public GameState GameState { get; set; } = GameState.NotStarted;
+    /// <summary>
+    /// Current game state.
+    /// </summary>
+    GameState GameState { get; set; }
 
-    /// <inheritdoc />
-    public IEnumerable<IPlayer> Players { get; set; }
+    /// <summary>
+    /// Players in the current game.
+    /// </summary>
+    IEnumerable<IPlayer> Players { get; set; }
 
-    /// <inheritdoc />
-    public IPlayer CurrentPlayer { get; set; }
+    /// <summary>
+    /// The player whose turn it currently is.
+    /// </summary>
+    IPlayer CurrentPlayer { get; set; }
 
-    /// <inheritdoc />
-    public IField Field { get; set; }
+    /// <summary>
+    /// Game field.
+    /// </summary>
+    IField Field { get; set; }
 }

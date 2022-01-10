@@ -3,6 +3,7 @@ using Talisman.Logic.Core.Cards.Implementation;
 using Talisman.Logic.Core.Decks.Implementation;
 using Talisman.Logic.Core.Encounters.Abstract;
 using Talisman.Logic.Core.Game.Abstract;
+using Talisman.Logic.Core.Game.Implementation;
 using Talisman.Logic.Core.Players.Abstract;
 
 namespace Talisman.Game.Logic.Tests.TestComponents;
@@ -26,5 +27,5 @@ public class TestBaseCard : BasePickableCard
     }
 
     /// <inheritdoc />
-    public override bool CanBePickedUpByPlayer(IGameData gameData, IPlayer player) => IsPickable;
+    public override bool CanBePickedUpByPlayer(GameData gameData, IPlayer player) => IsPickable;
 }

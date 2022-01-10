@@ -4,6 +4,7 @@ using Talisman.Logic.Core.Cards.Abstract;
 using Talisman.Logic.Core.Decks.Abstract;
 using Talisman.Logic.Core.Events.Abstract;
 using Talisman.Logic.Core.Game.Abstract;
+using Talisman.Logic.Core.Game.Implementation;
 using Talisman.Logic.Core.Players.Abstract;
 
 namespace Talisman.Logic.Core.Cards.Implementation;
@@ -22,14 +23,14 @@ public abstract class BasePickableCard : BaseCard, IPickableCard
     }
 
     /// <inheritdoc />
-    public virtual IEnumerable<IEvent> GetPickupEvents(IGameData gameData, IPlayer player) => Enumerable.Empty<IEvent>();
+    public virtual IEnumerable<IEvent> GetPickupEvents(GameData gameData, IPlayer player) => Enumerable.Empty<IEvent>();
 
     /// <inheritdoc />
-    public virtual IEnumerable<IEvent> GetDropEvents(IGameData gameData, IPlayer player) => Enumerable.Empty<IEvent>();
+    public virtual IEnumerable<IEvent> GetDropEvents(GameData gameData, IPlayer player) => Enumerable.Empty<IEvent>();
 
     /// <inheritdoc />
-    public virtual bool CanBePickedUpByPlayer(IGameData gameData, IPlayer player) => true;
+    public virtual bool CanBePickedUpByPlayer(GameData gameData, IPlayer player) => true;
 
     /// <inheritdoc />
-    public virtual bool CanBeDroppedByPlayer(IGameData gameData, IPlayer player) => player != null && Owner == player;
+    public virtual bool CanBeDroppedByPlayer(GameData gameData, IPlayer player) => player != null && Owner == player;
 }

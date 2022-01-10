@@ -83,6 +83,18 @@
     <Compile Include="Events\Implementation\DropCardEvent.cs" />
     <Compile Include="Events\Implementation\PlaceCardEvent.cs" />
     <Compile Include="Events\Implementation\WinGameEvent.cs" />
+    <Compile Include="Network\Messages\Abstract\IMessageable.cs" />
+    <Compile Include="Network\Messages\Abstract\IMessageClient.cs" />
+    <Compile Include="Network\Messages\Abstract\IMessageServer.cs" />
+    <Compile Include="Network\Messages\Abstract\MessageType.cs" />
+    <Compile Include="Network\Messages\Responses\Abstract\ResponseCode.cs" />
+    <Compile Include="Network\Messages\Implementation\BaseMessage.cs" />
+    <Compile Include="Network\Messages\Requests\Abstract\IRequestHandler.cs" />
+    <Compile Include="Network\Messages\Requests\Implementation\AsyncRequest.cs" />
+    <Compile Include="Network\Messages\Requests\Implementation\Request.cs" />
+    <Compile Include="Network\Messages\Requests\Implementation\RequestData.cs" />
+    <Compile Include="Network\Messages\Responses\Implementation\Response.cs" />
+    <Compile Include="Network\Messages\Responses\Implementation\ResponseData.cs" />
     <Compile Include="Players\Abstract\PlayerStatValueType.cs" />
     <Compile Include="Events\Implementation\BaseEvent.cs" />
     <Compile Include="Events\Implementation\PlayerStatEvent.cs" />
@@ -92,7 +104,6 @@
     <Compile Include="GameField\Abstract\IFieldCell.cs" />
     <Compile Include="GameField\Abstract\IFieldRegion.cs" />
     <Compile Include="Gameplay\Implementation\DiceUtils.cs" />
-    <Compile Include="Game\Abstract\IGameData.cs" />
     <Compile Include="Players\Abstract\Alignment.cs" />
     <Compile Include="GameField\Implementation\Field.cs" />
     <Compile Include="GameField\Implementation\BaseFieldCell.cs" />
@@ -109,6 +120,9 @@
     <Compile Include="Global\Abstract\IIdentifiable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Network\Abstract\" />
+    <Folder Include="Network\Implementation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

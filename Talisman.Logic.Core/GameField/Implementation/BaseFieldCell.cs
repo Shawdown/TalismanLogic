@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Talisman.Logic.Core.Cards.Abstract;
 using Talisman.Logic.Core.Encounters.Abstract;
 using Talisman.Logic.Core.Game.Abstract;
+using Talisman.Logic.Core.Game.Implementation;
 using Talisman.Logic.Core.GameField.Abstract;
 using Talisman.Logic.Core.Players.Abstract;
 
@@ -44,5 +45,5 @@ public abstract class BaseFieldCell : IFieldCell
     }
 
     /// <inheritdoc />
-    public abstract IEncounterResult Encounter(IGameData gameData, IPlayer player);
+    public abstract IEncounterResult Encounter(GameData gameData, IPlayer player);
 }

@@ -1,4 +1,5 @@
 ﻿using Talisman.Logic.Core.Game.Abstract;
+using Talisman.Logic.Core.Game.Implementation;
 using Talisman.Logic.Core.Players.Abstract;
 
 namespace Talisman.Logic.Core.Encounters.Abstract;
@@ -16,5 +17,5 @@ public interface IEncounterable
     /// <param name="player">Player encountering the object.</param>
     ///
     /// <returns>Encounter result.</returns>
-    IEncounterResult Encounter(IGameData gameData, IPlayer player);
+    IEncounterResult Encounter(GameData gameData, IPlayer player);
 }
